@@ -48,6 +48,12 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    if (theme !== 'dark') {
+      toggleTheme();
+    }
+  }, []);
+
   const createFloatingEmoji = () => {
     const emoji = emojis[Math.floor(Math.random() * emojis.length)];
     const x = Math.random() * windowSize.width;
@@ -87,9 +93,17 @@ export default function Home() {
   }
 
   return (
-    <main className={`min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-300 ${
+    <main className={`w-full h-full flex flex-col items-center justify-center p-4 transition-colors duration-300 ${
       theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
     }`}>
+      <button 
+        onClick={toggleTheme}
+        className="theme-toggle"
+        aria-label="Toggle theme"
+      >
+        {theme === 'dark' ? '🌞' : '🌙'}
+      </button>
+
       <FirstTimeLogin />
       
       <div className="confetti-container">
@@ -122,10 +136,10 @@ export default function Home() {
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-center max-w-4xl mx-auto px-4 mt-16 relative z-10"
+        className="card glass fixed-size"
       >
         <motion.h1 
-          className="text-3xl sm:text-4xl md:text-6xl font-bold mb-12 animate-float"
+          className="gradient-text text-3xl sm:text-4xl md:text-6xl font-bold mb-12 animate-float"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
@@ -137,9 +151,9 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleConfetti}
-            className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-purple-500 group-hover:from-blue-500 group-hover:to-purple-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800"
+            className="button-primary"
           >
-            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center gap-2">
+            <span className="flex items-center gap-2">
               🎉 Throw Confetti
             </span>
           </motion.button>
@@ -148,9 +162,9 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={changeMessage}
-            className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+            className="button-secondary"
           >
-            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center gap-2">
+            <span className="flex items-center gap-2">
               🔄 Change Message
             </span>
           </motion.button>

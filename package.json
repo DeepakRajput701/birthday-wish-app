@@ -13,31 +13,33 @@
     "cap:sync": "npx cap sync",
     "cap:open:android": "npx cap open android",
     "cap:open:ios": "npx cap open ios",
-    "build:mobile": "NODE_ENV=production npm run build && npx cap sync",
+    "build:mobile": "npm run build && npx cap sync",
     "android": "npm run build:mobile && npx cap open android",
     "ios": "npm run build:mobile && npx cap open ios"
   },
   "dependencies": {
-    "@capacitor/android": "^7.2.0",
-    "@capacitor/cli": "^7.2.0",
-    "@capacitor/core": "^7.2.0",
-    "@capacitor/ios": "^7.2.0",
-    "@capacitor/splash-screen": "^7.2.0",
-    "framer-motion": "^12.9.2",
-    "next": "15.3.1",
-    "react": "^19.0.0",
-    "react-confetti": "^6.4.0",
-    "react-dom": "^19.0.0"
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/ios": "^5.0.0",
+    "@capacitor/local-notifications": "^5.0.0",
+    "framer-motion": "^10.0.0",
+    "next": "14.0.0",
+    "react": "^18.0.0",
+    "react-confetti": "^6.1.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8.0.0",
+    "tailwindcss": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
